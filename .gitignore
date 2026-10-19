@@ -9,3 +9,16 @@ tmp/
 .idea/
 .DS_Store
 Thumbs.db
+
+# 凭据与环境配置（禁止提交）
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+.npmrc
+.netrc
+
+# 本机 Agent 规则（不纳入版本控制）
+AGENTS.md

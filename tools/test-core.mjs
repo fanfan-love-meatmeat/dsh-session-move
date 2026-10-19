@@ -42,17 +42,15 @@ async function checkAsync(name, fn) {
 
 check('projectKey: plain windows path', () => {
   assert.strictEqual(
-    projectKey('D:\\FJL\\Projects\\20261019_dsh_session_move_port'),
-    '--D-FJL-Projects-20261019_dsh_session_move_port--',
+    projectKey('C:\\work\\demo-project'),
+    '--C-work-demo-project--',
   )
 })
 
 check('projectKey: CJK escaped as uppercase hex', () => {
-  // Expected value taken from a real directory on this machine:
-  //   --D-BaiduSyncdisk-ZJU_Doctor-~4E13~5229~64B0~5199-20260524_~4E13~52292~64B0~5199--
   assert.strictEqual(
-    projectKey('D:\\BaiduSyncdisk\\ZJU_Doctor\\专利撰写\\20260524_专利2撰写'),
-    '--D-BaiduSyncdisk-ZJU_Doctor-~4E13~5229~64B0~5199-20260524_~4E13~52292~64B0~5199--',
+    projectKey('C:\\work\\测试\\标题'),
+    '--C-work-~6D4B~8BD5-~6807~9898--',
   )
 })
 
@@ -128,7 +126,7 @@ const HEADER = {
   version: 4,
   id: '0a42141c-1111-2222-3333-444455556666',
   createdAt: 1792379781409,
-  cwd: 'D:\\FJL\\Projects\\old',
+  cwd: 'C:\\work\\project-old',
   isSeeded: false,
   delegationDepth: 1,
   agentPreset: 'ptc',
@@ -160,8 +158,8 @@ await checkAsync('frames: header round-trips', async () => {
 await checkAsync('patch: only cwd changes, trailing bytes are byte-identical', async () => {
   const buffer = await makeLog()
   const { frames } = scanZstdFrames(buffer)
-  const result = await patchHeaderCwd(buffer, 'D:\\FJL\\Projects\\new')
-  assert.strictEqual(result.header.cwd, 'D:\\FJL\\Projects\\new')
+  const result = await patchHeaderCwd(buffer, 'C:\\work\\project-new')
+  assert.strictEqual(result.header.cwd, 'C:\\work\\project-new')
   assert.strictEqual(result.header.id, HEADER.id)
   assert.strictEqual(result.header.createdAt, HEADER.createdAt)
   assert.strictEqual(result.header.version, 4)
@@ -195,8 +193,8 @@ await checkAsync('patch: refuses a log with no complete frame', async () => {
 const ROOT = path.join('C:', 'home', 'sessions')
 
 check('I1: expected dir is projectKey(cwd)/encodeSegment(id)', () => {
-  const dir = expectedSessionDir(ROOT, { ...HEADER, cwd: 'D:\\FJL\\Projects\\old' })
-  assert.strictEqual(dir, path.join(ROOT, projectKey('D:\\FJL\\Projects\\old'), encodeSegment(HEADER.id)))
+  const dir = expectedSessionDir(ROOT, { ...HEADER, cwd: 'C:\\work\\project-old' })
+  assert.strictEqual(dir, path.join(ROOT, projectKey('C:\\work\\project-old'), encodeSegment(HEADER.id)))
 })
 
 check('I1: missing cwd is a hard error', () => {

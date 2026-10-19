@@ -35,7 +35,7 @@ const HEADER = {
   version: 4,
   id: '0a42141c-aaaa-bbbb-cccc-111122223333',
   createdAt: 1792379781409,
-  cwd: 'D:\\FJL\\Projects\\old',
+  cwd: 'C:\\work\\project-old',
   isSeeded: false,
   delegationDepth: 1,
 }
@@ -102,10 +102,10 @@ try {
 
   // --- simulate a partially applied move ---------------------------------
   await check('restore: byte-identical after a simulated failed move', async () => {
-    const patched = await patchHeaderCwd(originalBytes, 'D:\\FJL\\Projects\\new')
+    const patched = await patchHeaderCwd(originalBytes, 'C:\\work\\project-new')
     await writeFileAtomic(original.file, patched.buffer)
 
-    const newDir = path.join(sessionsRoot, projectKey('D:\\FJL\\Projects\\new'), encodeSegment(HEADER.id))
+    const newDir = path.join(sessionsRoot, projectKey('C:\\work\\project-new'), encodeSegment(HEADER.id))
     renameDir(original.dir, newDir)
 
     // recovery: one fixed sequence, not a per-step inverse
