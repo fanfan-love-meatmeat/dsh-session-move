@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Session move">
+  <rect x="4" y="14" width="22" height="16" rx="3" fill="none" stroke="#4f7cff" stroke-width="3"/>
+  <rect x="38" y="34" width="22" height="16" rx="3" fill="none" stroke="#4f7cff" stroke-width="3"/>
+  <path d="M18 42h20" stroke="#4f7cff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M33 36l6 6-6 6" fill="none" stroke="#4f7cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

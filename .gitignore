@@ -1,0 +1,11 @@
+# 依赖与构建产物
+node_modules/
+*.tgz
+tmp/
+*.log
+
+# 编辑器/系统噪音
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

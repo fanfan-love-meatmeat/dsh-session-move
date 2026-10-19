@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Session Move · Delete · AI Rename",
+    "description": "Move a session to another workspace, delete one permanently, or AI-rename the session title — from the sidebar menu. Every change is a snapshot-backed transaction with a journal, and the same three actions are exposed to agents as tools."
+  }
+}

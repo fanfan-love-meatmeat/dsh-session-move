@@ -1,0 +1,71 @@
+{
+  "name": "dsh-session-move",
+  "version": "0.3.7+dsh.0.2.1-rc.2",
+  "description": "Rename sessions, move them between workspaces, or delete them — from the DeepSeek Harness (dsh) Web UI sidebar menu. AI rename rewrites a session's existing title from what you said in it; move relocates the log directory, header cwd, workspace accounting and projection cache together; delete snapshots first and then removes everything. Every change is a snapshot-backed transaction with an operation journal and four verified invariants. Also exposes three agent tools: workbench_session_move, workbench_session_delete, workbench_session_rename_ai.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "deepseek",
+    "session",
+    "sessions",
+    "workspace",
+    "folder",
+    "project",
+    "move",
+    "migrate",
+    "relocate",
+    "delete",
+    "remove",
+    "rename",
+    "rename-session",
+    "session-title",
+    "title",
+    "ai-rename",
+    "snapshot",
+    "rollback",
+    "transaction",
+    "journal",
+    "会话",
+    "工作区",
+    "移动",
+    "删除",
+    "重命名",
+    "标题"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./src/client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src/",
+    "locale/*.json",
+    "icon.svg",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node tools/test-core.mjs && node tools/test-ops.mjs && node tools/test-move.mjs && node tools/test-snapshot.mjs"
+  },
+  "engines": {
+    "node": ">=22.19.0",
+    "dsh": "^0.2.1-rc.2"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  }
+}
